@@ -1,1 +1,17 @@
---- []
+---
+- !ruby/object:Contact
+  phone_numbers:
+  - !ruby/object:PhoneNumber
+    kind: Home
+    number: 817 123 4567
+  addresses:
+  - !ruby/object:Address
+    kind: Home
+    street_1: 2038 flyer street
+    street_2: ''
+    city: Goodland
+    state: Texas
+    postal_code: '70000'
+  first_name: David
+  middle_name: Needs
+  last_name: Cafe

@@ -1,12 +1,12 @@
 require "./contact"
-require "yaml"
+require "yaml" #for saving work the objects to a file for access passed the end of runtime.
 
 class AddressBook
   attr_reader :contacts
 
   def initialize
     @contacts = []
-    open()
+    open() #load from contacts file
   end
 
   def open
@@ -15,13 +15,13 @@ class AddressBook
     end
   end
 
-  def save
+  def save #saves to contacts file
     File.open("contacts.yml", "w") do |file|
       file.write(contacts.to_yaml)
     end
   end
 
-  def run
+  def run #pending an update contact method.
       loop do
         puts "Address Book:"
         puts "a: Add Contact"
@@ -58,7 +58,7 @@ class AddressBook
     print "Last name: "
     contact.last_name = gets.chomp
 
-    loop do
+    loop do #loop to receive all numbers and addresses.
       puts "Add phone number or address? "
       puts "p: Add phone number"
       puts "a: Add address"
@@ -93,7 +93,7 @@ class AddressBook
       end
     end
 
-    contacts.push(contact)
+    contacts.push(contact) #add to contacts array.
   end
 
 
@@ -108,7 +108,7 @@ class AddressBook
 
   end
 
-  def find_by_name(name)
+  def find_by_name(name) #**
     results = []
     search = name.downcase
     contacts.each do |contact|
@@ -121,7 +121,7 @@ class AddressBook
 
   end
 
-  def find_by_phone_number(number)
+  def find_by_phone_number(number) #**
     results = []
     search = number.gsub("-","") ##remove dashes
     contacts.each do |contact|
@@ -134,7 +134,7 @@ class AddressBook
     print_results("Phone search results (#{search})", results)
   end
 
-  def find_by_address(query)
+  def find_by_address(query) #**  all called by the search function.
     results = []
     search = query.downcase
     contacts.each do |contact|
@@ -147,11 +147,11 @@ class AddressBook
     print_results("Address search results (#{search})", results)
   end
 
-  def print_contact_list
+  def print_contact_list #
     puts "Contact List:"
     contacts.each do |contact|
       puts contact.to_s('last_first')
-      #should also print out address, phone numbers.
+      #Will also print out a contact ID, for update selection.
     end
   end
 end

@@ -2,15 +2,15 @@ require "./phone_number"
 require "./address"
 
 class Contact
-  attr_writer :first_name, :middle_name, :last_name
+  attr_accessor :first_name, :middle_name, :last_name #attr_accessors and reader for all the fields
   attr_reader :phone_numbers, :addresses
 
-  def initialize #upon class creation, set up arrays for multiple numbers and addresses
+  def initialize #upon class creation, set up arrays for a contacts multiple numbers and addresses
     @phone_numbers = []
     @addresses = []
   end
 
-  def add_address(kind, street_1, street_2, city, state, postal_code)
+  def add_address(kind, street_1, street_2, city, state, postal_code) #method to create a new address for a contact
     address = Address.new
     address.kind = kind
     address.street_1 = street_1
@@ -21,26 +21,14 @@ class Contact
     addresses.push(address)
   end
 
-  def add_phone_number(kind, number)
+  def add_phone_number(kind, number) #method to add a new phone number to a contact
     phone_number = PhoneNumber.new
     phone_number.kind = kind
     phone_number.number = number
     phone_numbers.push(phone_number)
   end
 
-  def first_name
-    @first_name
-  end
-
-  def middle_name
-    @middle_name
-  end
-
-  def last_name
-    @last_name
-  end
-
-  def last_first
+  def last_first  #method to print out in format Doe, John R. most descriptive and compact, good for the address book printout
     last_first = last_name
     last_first += ", "
     last_first += first_name
@@ -52,14 +40,8 @@ class Contact
     last_first
   end
 
-  def first_last
-    first_last = first_name
-    first_last += " "
-    first_last += last_name
-    first_last #return full_name
-  end
 
-  def full_name
+  def full_name #method to print out whole name, when specific contact is brought up.
     full_name = first_name
     if !@middle_name.nil?
       full_name += " "
@@ -76,22 +58,22 @@ class Contact
       full_name
     when 'last_first'
       last_first
-    when 'first'
+    when 'middle' #**
+      middle_name
+    when 'first' #**
       first_name
-    when 'last'
+    when 'last' #** these are preemptively placed for when I add the update contact method.
       last_name
-    when 'first_last'
-      first_last
     end
   end
 
   def print_phone_numbers
     puts "Phone Numbers"
-    phone_numbers.each{|phone_number| puts phone_number} #automatically calls the to_s func inside phone_number class
+    phone_numbers.each{|phone_number| puts phone_number} #*** these automatically calls the to_s func inside phone_number class
   end
 
   def print_addresses
     puts "Addresses"
-    addresses.each{|address| puts address}
+    addresses.each{|address| puts address} #***
   end
 end
