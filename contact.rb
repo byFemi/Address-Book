@@ -1,7 +1,7 @@
-require "./phone_number"
+require "./phone_number" #requires the phone number and adress classes.
 require "./address"
 
-class Contact
+class Contact #this class characterizes a contact completely
   attr_accessor :first_name, :middle_name, :last_name #attr_accessors and reader for all the fields
   attr_reader :phone_numbers, :addresses
 

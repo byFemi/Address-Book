@@ -1,7 +1,7 @@
-require "./contact"
+require "./contact" #requires contacts as well as address and phone_number
 require "yaml" #for saving work the objects to a file for access passed the end of runtime.
 
-class AddressBook
+class AddressBook #This class defines the address_book in it's entirety, pending updates
   attr_reader :contacts
 
   def initialize
