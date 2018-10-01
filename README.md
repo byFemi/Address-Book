@@ -1,6 +1,5 @@
 # Ruby Address Book
 
-One Paragraph of project description goes here
 This is an Address Book suite, that works just like a regular Address book would - just significantly lighter.
 You can add contacts, their addresses, and phone numbers(Work, Home, etc.
 You can print a contacts information and the records of the addressbook as a whole.
@@ -33,7 +32,7 @@ ruby address_book.rb
 
 
 ## Running the program
-Follow the choices to
+Follow the prompts to create and search through records.
 
 
 ## Authors
